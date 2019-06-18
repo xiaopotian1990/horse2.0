@@ -10,6 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>horse-biz-order</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>horse-biz-order-server</module>
+    </modules>
 
 
 </project>
