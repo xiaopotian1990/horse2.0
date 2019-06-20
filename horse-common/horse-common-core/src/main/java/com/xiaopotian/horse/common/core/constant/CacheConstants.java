@@ -1,0 +1,55 @@
+package com.xiaopotian.horse.common.core.constant;
+
+/**
+ * ==========================================
+ * 缓存的key 常量
+ *
+ * @author : 小破天
+ * @date : 2019/6/19 15:25
+ * 博客园：http://www.cnblogs.com/xiaopotian/
+ * ===========================================
+ */
+public interface CacheConstants {
+
+    /**
+     * 菜单信息缓存
+     */
+    String MENU_DETAILS = "menu_details";
+
+    /**
+     * 用户信息缓存
+     */
+    String USER_DETAILS = "user_details";
+
+    /**
+     * 字典信息缓存
+     */
+    String DICT_DETAILS = "dict_details";
+
+
+    /**
+     * oauth 客户端信息
+     */
+    String CLIENT_DETAILS_KEY = "pigx_oauth:client:details";
+
+
+    /**
+     * spring boot admin 事件key
+     */
+    String EVENT_KEY = "event_key";
+
+    /**
+     * 路由存放
+     */
+    String ROUTE_KEY = "gateway_route_key";
+
+    /**
+     * 参数缓存
+     */
+    String PARAMS_DETAILS = "params_details";
+
+    /**
+     * 租户缓存
+     */
+    String TENANT_DETAILS = "tenant_details";
+}

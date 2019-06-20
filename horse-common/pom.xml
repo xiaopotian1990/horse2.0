@@ -11,8 +11,16 @@
 
     <artifactId>horse-common</artifactId>
     <packaging>pom</packaging>
+    <description>horse公共聚合模块</description>
     <modules>
         <module>horse-common-bom</module>
+        <module>horse-common-core</module>
+        <module>horse-common-data</module>
+        <module>horse-common-datasource</module>
+        <module>horse-common-gateway</module>
+        <module>horse-common-job</module>
+        <module>horse-common-log</module>
+        <module>horse-common-security</module>
     </modules>
 
 
