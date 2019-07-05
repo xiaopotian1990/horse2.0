@@ -1,0 +1,42 @@
+package com.xiaopotian.horse.common.datasource.support;
+
+/**
+ * ==========================================
+ * 数据源相关常量
+ *
+ * @author : 小破天
+ * @date : 2019/7/4 16:47
+ * 博客园：http://www.cnblogs.com/xiaopotian/
+ * ===========================================
+ */
+public interface DataSourceConstants {
+    /**
+     * 查询数据源的SQL
+     */
+    String QUERY_DS_SQL = "select * from sys_datasource_conf where del_flag = 0";
+
+    /**
+     * 动态路由KEY
+     */
+    String DS_ROUTE_KEY = "id";
+
+    /**
+     * 数据源名称
+     */
+    String DS_NAME = "name";
+
+    /**
+     * jdbcurl
+     */
+    String DS_JDBC_URL = "url";
+
+    /**
+     * 用户名
+     */
+    String DS_USER_NAME = "username";
+
+    /**
+     * 密码
+     */
+    String DS_USER_PWD = "password";
+}
