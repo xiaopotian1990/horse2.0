@@ -30,6 +30,17 @@
         </developer>
     </developers>
 
+    <repositories>
+        <repository>
+            <id>zhfish-maven-repo</id>
+            <url>https://gitee.com/zhfish/maven/raw/master/repository</url>
+        </repository>
+        <repository>
+            <id>hoskeeper-maven-repo</id>
+            <url>https://maven.hoskeeper.net/repository/maven-public</url>
+        </repository>
+    </repositories>
+
     <properties>
         <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
@@ -183,19 +194,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <repositories>
-        <!--阿里云私服-->
-        <repository>
-            <id>aliyun</id>
-            <name>aliyun</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
-        <!--gitee 私服-->
-        <repository>
-            <id>gitee.wang</id>
-            <name>gitee.wang</name>
-            <url>http://nexus.gitee.wang/repository/maven-releases/</url>
-        </repository>
-    </repositories>
 </project>

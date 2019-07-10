@@ -2,6 +2,7 @@ package com.xiaopotian.horse.biz.order.server.controller;
 
 import com.xiaopotian.horse.biz.order.server.config.HorseConfigProperties;
 import com.xiaopotian.horse.biz.order.server.view.ConfigVM;
+import com.xiaopotian.horse.common.log.annotation.SysLogAnnotation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +25,12 @@ public class ConfigController {
     private HorseConfigProperties config;
 
     @GetMapping("/config")
+    @SysLogAnnotation("config")
     public ConfigVM config(@RequestParam Integer param) {
         int i = 1 / param;
         log.info("name:{};age:{}", config.getName(), config.getAge());
-        return new ConfigVM(config.getName(), config.getAge());
+        ConfigVM vm = new ConfigVM(config.getName(), config.getAge());
+
+        return vm;
     }
 }

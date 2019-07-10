@@ -11,10 +11,11 @@ spring:
     nacos:
       discovery:
         server-addr: ${NACOS-HOST:horse-nacos}:${NACOS-HOST:8848}
-        namespace: e6e3627d-8e9e-43c2-b6af-f061ccf675b7
+        namespace: 76d2ebb8-2011-4ef5-9956-1546b4321ee0
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
         file-extension: yml
         shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-        namespace: e6e3627d-8e9e-43c2-b6af-f061ccf675b7
-        group: zl
+        refreshable-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+        namespace: 76d2ebb8-2011-4ef5-9956-1546b4321ee0
+        group: horse

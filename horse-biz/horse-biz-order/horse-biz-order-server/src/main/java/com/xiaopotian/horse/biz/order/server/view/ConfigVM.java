@@ -3,6 +3,8 @@ package com.xiaopotian.horse.biz.order.server.view;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * ==========================================
  * Created with IntelliJ IDEA.
@@ -14,7 +16,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class ConfigVM {
+public class ConfigVM implements Serializable {
     private String name;
     private Integer age;
 }

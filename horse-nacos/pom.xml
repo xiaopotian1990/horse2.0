@@ -14,22 +14,43 @@
     <name>${project.artifactId}</name>
     <description>nacos 服务注册与发现、统一配置中心</description>
 
+    <properties>
+        <nacos.version>1.1.0</nacos.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-naming</artifactId>
+            <version>${nacos.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
             <artifactId>nacos-config</artifactId>
-            <version>1.0.0</version>
+            <version>${nacos.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.nacos</groupId>
             <artifactId>nacos-core</artifactId>
-            <version>1.0.0</version>
+            <version>${nacos.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-naming</artifactId>
-            <version>1.0.0</version>
+            <artifactId>nacos-api</artifactId>
+            <version>${nacos.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-common</artifactId>
+            <version>${nacos.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-cmdb</artifactId>
+            <version>${nacos.version}</version>
+        </dependency>
+
         <!-- log -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -52,15 +73,66 @@
             <version>0.10.5</version>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                    <argLine>-Dnacos.standalone=true</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.alibaba.nacos.config.server.Config</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
             </plugin>
         </plugins>
+        <!-- <resources>
+                <resource>
+                    <filtering>true</filtering>
+                    <directory>src/main/resources</directory>
+                    <excludes>
+                        <exclude>application.properties</exclude>
+                        <exclude>banner.txt</exclude>
+                        <exclude>schema.sql</exclude>
+                        <exclude>nacos-db.sql</exclude>
+                    </excludes>
+                </resource>
+            </resources> -->
     </build>
-
+    <profiles>
+        <profile>
+            <id>springboot</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.alibaba.nacos</groupId>
+                    <artifactId>nacos-core</artifactId>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <mainClass>com.alibaba.nacos.config.server.Config</mainClass>
+                        </configuration>
+                    </plugin>
+                </plugins>
+                <finalName>nacos-config</finalName>
+            </build>
+        </profile>
+    </profiles>
 </project>

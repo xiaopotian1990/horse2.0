@@ -64,7 +64,7 @@ public class DataScopeInterceptor extends AbstractSqlParserHandler implements In
         String scopeName = dataScope.getScopeName();
         List<Integer> deptIds = dataScope.getDeptIds();
         // 优先获取赋值数据
-        if (CollUtil.isEmpty(deptIds)) {
+        /*if (CollUtil.isEmpty(deptIds)) {
             PigxUser user = SecurityUtils.getUser();
             if (user == null) {
                 throw new CheckedException("auto datascope, set up security details true");
@@ -103,7 +103,7 @@ public class DataScopeInterceptor extends AbstractSqlParserHandler implements In
             if (DataScopeTypeEnum.OWN_LEVEL.getType() == dsType) {
                 deptIds.add(user.getDeptId());
             }
-        }
+        }*/
         String join = CollectionUtil.join(deptIds, ",");
         originalSql = "select * from (" + originalSql + ") temp_data_scope where temp_data_scope." + scopeName + " in (" + join + ")";
         metaObject.setValue("delegate.boundSql.sql", originalSql);

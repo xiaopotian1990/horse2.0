@@ -32,5 +32,6 @@ public class SysLogListener {
         SysLogModel sysLog = event.getSysLog();
 
         // TODO: 2019/7/5  保存日志
+        log.info("log日志模块：{}",sysLog.toString());
     }
 }

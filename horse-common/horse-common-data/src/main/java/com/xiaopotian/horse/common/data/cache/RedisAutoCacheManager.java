@@ -2,6 +2,7 @@ package com.xiaopotian.horse.common.data.cache;
 
 import cn.hutool.core.util.StrUtil;
 import com.xiaopotian.horse.common.core.constant.CommonConstants;
+import com.xiaopotian.horse.common.data.tenant.TenantContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
 import org.springframework.data.redis.cache.RedisCache;
