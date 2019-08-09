@@ -21,6 +21,7 @@
         <module>horse-common-job</module>
         <module>horse-common-log</module>
         <module>horse-common-security</module>
+        <module>horse-common-sequence</module>
     </modules>
     <dependencies>
         <dependency>

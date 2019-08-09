@@ -23,6 +23,10 @@ import java.util.List;
 @ConfigurationProperties(prefix = "horse.tenant")
 public class HorseTenantConfigProperties {
     /**
+     * 是否开启多租户
+     */
+    private Boolean isOpen=false;
+    /**
      * 维护租户列名称
      */
     private String column = "tenant_id";

@@ -2,8 +2,10 @@ package com.xiaopotian.horse.common.data.cache;
 
 import cn.hutool.core.util.StrUtil;
 import com.xiaopotian.horse.common.core.constant.CommonConstants;
+import com.xiaopotian.horse.common.data.tenant.HorseTenantConfigProperties;
 import com.xiaopotian.horse.common.data.tenant.TenantContextHolder;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -25,6 +27,9 @@ import java.util.Map;
  */
 @Slf4j
 public class RedisAutoCacheManager extends RedisCacheManager {
+    @Autowired
+    private HorseTenantConfigProperties horseTenantConfigProperties;
+
     private static final String SPLIT_FLAG = "#";
     private static final int CACHE_LENGTH = 2;
 
@@ -59,6 +64,10 @@ public class RedisAutoCacheManager extends RedisCacheManager {
      */
     @Override
     public Cache getCache(String name) {
-        return super.getCache(TenantContextHolder.getTenantId() + StrUtil.COLON + name);
+        if (horseTenantConfigProperties.getIsOpen()) {
+            return super.getCache(TenantContextHolder.getTenantId() + StrUtil.COLON + name);
+        } else {
+            return super.getCache(name);
+        }
     }
 }

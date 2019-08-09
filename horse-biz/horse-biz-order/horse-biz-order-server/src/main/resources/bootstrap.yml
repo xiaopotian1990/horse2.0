@@ -7,11 +7,13 @@ spring:
   profiles:
     active: dev
 
+
   cloud:
     nacos:
       discovery:
-        server-addr: ${NACOS-HOST:horse-nacos}:${NACOS-HOST:8848}
+        server-addr: ${NACOS-HOST:localhost}:${NACOS-HOST:8848}
         namespace: 76d2ebb8-2011-4ef5-9956-1546b4321ee0
+        cluster-name:
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
         file-extension: yml
@@ -19,3 +21,7 @@ spring:
         refreshable-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
         namespace: 76d2ebb8-2011-4ef5-9956-1546b4321ee0
         group: horse
+
+security:
+  basic:
+    enabled: false

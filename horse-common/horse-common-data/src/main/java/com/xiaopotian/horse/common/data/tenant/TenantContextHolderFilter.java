@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.xiaopotian.horse.common.core.constant.CommonConstants;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -28,9 +29,16 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class TenantContextHolderFilter extends GenericFilterBean {
+    @Autowired
+    HorseTenantConfigProperties horseTenantConfigProperties;
+
     @Override
     @SneakyThrows
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) {
+        if (!horseTenantConfigProperties.getIsOpen()) {
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
+        }
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 

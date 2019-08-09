@@ -4,6 +4,7 @@ import com.xiaopotian.horse.common.core.constant.CommonConstants;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * ==========================================
@@ -16,8 +17,14 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class HorseFeignTenantInterceptor implements RequestInterceptor {
+    @Autowired
+    HorseTenantConfigProperties horseTenantConfigProperties;
+
     @Override
     public void apply(RequestTemplate requestTemplate) {
+        if (!horseTenantConfigProperties.getIsOpen()) {
+            return;
+        }
         if (TenantContextHolder.getTenantId() == null) {
             log.error("TTL中的租户ID为空，feign拦截器 >> 增强失败");
             return;

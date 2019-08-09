@@ -1,6 +1,6 @@
 package com.xiaopotian.horse.common.log.aspect;
 
-import com.xiaopotian.horse.common.log.annotation.SysLogAnnotation;
+import com.xiaopotian.horse.common.log.annotation.SysLog;
 import com.xiaopotian.horse.common.log.data.SysLogModel;
 import com.xiaopotian.horse.common.log.event.SysLogEvent;
 import com.xiaopotian.horse.common.log.util.SysLogUtils;
@@ -36,7 +36,7 @@ public class SysLogAspect {
      */
     @SneakyThrows
     @Around("@annotation(sysLog)")
-    public Object around(ProceedingJoinPoint point, SysLogAnnotation sysLog) {
+    public Object around(ProceedingJoinPoint point, SysLog sysLog) {
         String strClassName = point.getTarget().getClass().getName();
         String strMethodName = point.getSignature().getName();
         log.debug("[类名]:{},[方法]:{}", strClassName, strMethodName);

@@ -14,6 +14,7 @@
         <module>horse-common</module>
         <module>horse-gateway</module>
         <module>horse-biz</module>
+        <module>horse-code-generator</module>
     </modules>
 
     <organization>
@@ -67,6 +68,7 @@
         <docker.url>http://192.168.0.13:4243</docker.url>
         <docker.plugin.version>0.4.12</docker.plugin.version>
         <registry.url>192.168.0.13:5000</registry.url>
+        <mysql.connector.version>8.0.13</mysql.connector.version>
     </properties>
 
     <dependencies>
